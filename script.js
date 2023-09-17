@@ -75,4 +75,3 @@ function generateCalendar(year, month) {
 
 // Initial load
 generateCalendar(2023, 8) // September is month 8 (0-based index)
-
