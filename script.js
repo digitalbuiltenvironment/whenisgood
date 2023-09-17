@@ -25,7 +25,7 @@ function addData() {
   let newRow = table.insertRow(table.rows.length)
 
   // Insert data into cells of new row
-  newRow.insertCell(0).innerHTML = selectedDayElement
+  newRow.insertCell(0).innerHTML = selectedDayElement.textContent
   newRow.insertCell(1).innerHTML = name
   newRow.insertCell(2).innerHTML = nineInput
   newRow.insertCell(3).innerHTML = tenInput
@@ -51,7 +51,12 @@ function generateCalendar(year, month) {
 
     // Add a click event listener to record the selected day
     cell.addEventListener('click', function () {
-      selectedDayElement.textContent = `Selected Day: ${currentDate.toDateString()}`
+      const clickedDate = new Date(
+        year,
+        month,
+        parseInt(event.target.textContent)
+      )
+      selectedDayElement.textContent = `${clickedDate.toDateString()}`
     })
 
     // Add the cell to the calendar
