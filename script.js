@@ -25,74 +25,121 @@ function addData() {
   let newRow = table.insertRow(table.rows.length)
 
   // Insert data into cells of new row
-  newRow.insertCell(0).innerHTML = '16 September'
+  newRow.insertCell(0).innerHTML = selectedDayElement
   newRow.insertCell(1).innerHTML = name
   newRow.insertCell(2).innerHTML = nineInput
   newRow.insertCell(3).innerHTML = tenInput
   newRow.insertCell(4).innerHTML = elevenInput
 }
 
-function createCalendar(elem, year, month) {
-  let mon = month - 1 // months in JS are 0..11, not 1..12
-  let d = new Date(year, mon)
+// Get a reference to the table body and selectedDayElement
+const calendarBody = document.querySelector('#calendar tbody')
+const selectedDayElement = document.querySelector('#selectedDay')
 
-  let table =
-    '<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>'
+// Function to generate the calendar for the current month
+function generateCalendar(year, month) {
+  calendarBody.innerHTML = ''
 
-  // spaces for the first row
-  // from Monday till the first day of the month
-  // * * * 1  2  3  4
-  for (let i = 0; i < getDay(d); i++) {
-    table += '<td></td>'
-  }
+  const firstDay = new Date(year, month, 1)
+  const lastDay = new Date(year, month + 1, 0)
 
-  // <td> with actual dates
-  while (d.getMonth() == mon) {
-    table +=
-      '<td onclick="deleteTable(),tableCreate();">' + d.getDate() + '</td>'
+  let currentDate = new Date(firstDay)
 
-    if (getDay(d) % 7 == 6) {
-      // sunday, last day of week - newline
-      table += '</tr><tr>'
+  while (currentDate <= lastDay) {
+    const cell = document.createElement('td')
+    cell.textContent = currentDate.getDate()
+
+    // Add a click event listener to record the selected day
+    cell.addEventListener('click', function () {
+      selectedDayElement.textContent = `Selected Day: ${currentDate.toDateString()}`
+    })
+
+    // Add the cell to the calendar
+    calendarBody.appendChild(cell)
+
+    // Move to the next day
+    currentDate.setDate(currentDate.getDate() + 1)
+
+    // Start a new row at the beginning of the week
+    if (currentDate.getDay() === 0) {
+      const newRow = document.createElement('tr')
+      calendarBody.appendChild(newRow)
     }
-
-    d.setDate(d.getDate() + 1)
   }
-
-  // add spaces after last days of month for the last row
-  // 29 30 31 * * * *
-  if (getDay(d) != 0) {
-    for (let i = getDay(d); i < 7; i++) {
-      table += '<td></td>'
-    }
-  }
-
-  // close the table
-  table += '</tr></table>'
-
-  elem.innerHTML = table
 }
 
-function getDay(date) {
-  // get day number from 0 (monday) to 6 (sunday)
-  let day = date.getDay()
-  if (day == 0) day = 7 // make Sunday (0) the last day
-  return day - 1
-}
+// Initial load
+generateCalendar(2023, 8) // September is month 8 (0-based index)
 
-createCalendar(calendar, 2023, 9)
+// function createCalendar(elem, year, month) {
+//   let mon = month - 1 // months in JS are 0..11, not 1..12
+//   let d = new Date(year, mon)
 
-if (window.addEventListener) {
-  document.addEventListener('click', function (e) {
-    if (e.target.id.indexOf('br') === 0) {
-      alert(e.target.innerHTML)
-    }
-  })
-}
+//   let table =
+//     '<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>'
 
-function selectTime() {
-  console.log('print')
-}
+//   // spaces for the first row
+//   // from Monday till the first day of the month
+//   // * * * 1  2  3  4
+//   for (let i = 0; i < getDay(d); i++) {
+//     table += '<td></td>'
+//   }
+
+//   // <td> with actual dates
+//   while (d.getMonth() == mon) {
+//     table += '<td onclick="selectTime()">' + d.getDate() + '</td>'
+
+//     if (getDay(d) % 7 == 6) {
+//       // sunday, last day of week - newline
+//       table += '</tr><tr>'
+//     }
+
+//     d.setDate(d.getDate() + 1)
+
+//     $('td').click(function (e) {
+//       var txt = $(e.target).text()
+//       console.log(txt)
+//     })
+//   }
+
+//   // add spaces after last days of month for the last row
+//   // 29 30 31 * * * *
+//   if (getDay(d) != 0) {
+//     for (let i = getDay(d); i < 7; i++) {
+//       table += '<td></td>'
+//     }
+//   }
+
+//   // close the table
+//   table += '</tr></table>'
+
+//   elem.innerHTML = table
+// }
+
+// function getDay(date) {
+//   // get day number from 0 (monday) to 6 (sunday)
+//   let day = date.getDay()
+//   if (day == 0) day = 7 // make Sunday (0) the last day
+//   return day - 1
+// }
+
+// createCalendar(calendar, 2023, 9)
+
+// if (window.addEventListener) {
+//   document.addEventListener('click', function (e) {
+//     if (e.target.id.indexOf('br') === 0) {
+//       alert(e.target.innerHTML)
+//     }
+//   })
+// }
+
+// function $(x) {
+//   return document.getElementById(x)
+// }
+
+// function selectTime() {
+//   console.log('print')
+// }
 
 // function tableCreate() {
 //   const body = document.body,

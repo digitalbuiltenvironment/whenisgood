@@ -4,6 +4,26 @@
     <style>
       table {
         border-collapse: collapse;
+        width: 300px;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+      th,
+      td {
+        text-align: center;
+        padding: 10px;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      td {
+        cursor: pointer;
+      }
+      /* table {
+        border-collapse: collapse;
       }
 
       td,
@@ -20,12 +40,36 @@
 
       td {
         cursor: pointer;
-      }
+      } */
     </style>
     <link rel="stylesheet" href="./style.css" />
   </head>
 
   <body>
+    <h1>Simple Calendar</h1>
+    <div>
+      <button onclick="prevMonth()">Previous Month</button>
+      <button onclick="nextMonth()">Next Month</button>
+    </div>
+    <table id="calendar">
+      <thead>
+        <tr>
+          <th colspan="7">September 2023</th>
+        </tr>
+        <tr>
+          <th>Sun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <p id="selectedDay">Selected Day: None</p>
+
     <div id="calendar"></div>
     <div id="name">
       <ul>
@@ -86,6 +130,7 @@
         <th>11-12</th>
       </tr>
     </table>
+    <p id="selectedDay">Selected Day: None</p>
 
     <script src="script.js"></script>
   </body>
