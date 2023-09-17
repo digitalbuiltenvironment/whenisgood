@@ -1,4 +1,6 @@
 function addData() {
+  // Get input of user name
+  let name = document.getElementById('nameInput').value
   // Get input values for specific date
   if (document.getElementById('nineInput').checked) {
     nineInput = document.getElementById('nineInput').value
@@ -24,7 +26,7 @@ function addData() {
 
   // Insert data into cells of new row
   newRow.insertCell(0).innerHTML = '16 September'
-  newRow.insertCell(1).innerHTML = 'Bryan'
+  newRow.insertCell(1).innerHTML = name
   newRow.insertCell(2).innerHTML = nineInput
   newRow.insertCell(3).innerHTML = tenInput
   newRow.insertCell(4).innerHTML = elevenInput
@@ -92,34 +94,34 @@ function selectTime() {
   console.log('print')
 }
 
-function tableCreate() {
-  const body = document.body,
-    tbl = document.createElement('table')
-  tbl.style.width = '100px'
-  tbl.style.border = '1px solid black'
+// function tableCreate() {
+//   const body = document.body,
+//     tbl = document.createElement('table')
+//   tbl.style.width = '100px'
+//   tbl.style.border = '1px solid black'
 
-  for (let i = 0; i < 3; i++) {
-    const tr = tbl.insertRow()
-    for (let j = 0; j < 2; j++) {
-      if (i === 2 && j === 1) {
-        break
-      } else {
-        const td = tr.insertCell()
-        td.appendChild(document.createTextNode(`Cell I${i}/J${j}`))
-        td.style.border = '1px solid black'
-        if (i === 1 && j === 1) {
-          td.setAttribute('rowSpan', '2')
-        }
-      }
-    }
-  }
-  body.appendChild(tbl)
-}
+//   for (let i = 0; i < 3; i++) {
+//     const tr = tbl.insertRow()
+//     for (let j = 0; j < 2; j++) {
+//       if (i === 2 && j === 1) {
+//         break
+//       } else {
+//         const td = tr.insertCell()
+//         td.appendChild(document.createTextNode(`Cell I${i}/J${j}`))
+//         td.style.border = '1px solid black'
+//         if (i === 1 && j === 1) {
+//           td.setAttribute('rowSpan', '2')
+//         }
+//       }
+//     }
+//   }
+//   body.appendChild(tbl)
+// }
 
-function deleteTable() {
-  if (tbl != null) {
-    return '1'
-  } else {
-    body.deleteChild(tbl)
-  }
-}
+// function deleteTable() {
+//   if (tbl != null) {
+//     return '1'
+//   } else {
+//     body.deleteChild(tbl)
+//   }
+// }
