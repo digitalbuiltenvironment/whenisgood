@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+
+      td,
+      th {
+        border: 1px solid black;
+        padding: 3px;
+        text-align: center;
+      }
+
+      th {
+        font-weight: bold;
+        background-color: #e6e6e6;
+      }
+
+      td {
+        cursor: pointer;
+      }
+    </style>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div id="calendar"></div>
+    <div id="timeInput">
+      <ul>
+        <label for="nineInput"> 9am to 10am: </label>
+        <input type="hidden" id="nineInputHidden" value="No" />
+        <input type="checkbox" id="nineInput" value="yes" />
+      </ul>
+      <ul>
+        <label for="tenInput">10am to 11am: </label>
+        <input type="hidden" id="tenInputHidden" value="No" />
+        <input type="checkbox" id="tenInput" value="yes" />
+      </ul>
+      <ul>
+        <label for="elevenInput">11am to 12pm: </label>
+        <input type="hidden" id="elevenInputHidden" value="No" />
+        <input type="checkbox" id="elevenInput" value="yes" />
+      </ul>
+      <ul>
+        <label for="twelveInput">12pm to 1pm: </label>
+        <input type="checkbox" id="twelveInput" value="12-1" />
+      </ul>
+      <ul>
+        <label for="oneInput">1pm to 2pm: </label>
+        <input type="checkbox" id="oneInput" value="1-2" />
+      </ul>
+      <ul>
+        <label for="twoInput">2pm to 3pm: </label>
+        <input type="checkbox" id="twoInput" value="2-3" />
+      </ul>
+      <ul>
+        <label for="threeInput">3pm to 4pm: </label>
+        <input type="checkbox" id="threeInput" value="3-4" />
+      </ul>
+      <ul>
+        <label for="fourInput">4pm to 5pm: </label>
+        <input type="checkbox" id="fourInput" value="4-5" />
+      </ul>
+      <ul>
+        <label for="fiveInput">5pm to 6pm: </label>
+        <input type="checkbox" id="fiveInput" value="5-6" />
+      </ul>
+    </div>
+
+    <button onclick="addData()">Add</button>
+
+    <table id="outputTable">
+      <tr>
+        <th>Date</th>
+        <th>Name</th>
+        <th>9-10</th>
+        <th>10-11</th>
+        <th>11-12</th>
+      </tr>
+    </table>
+
+    <script src="script.js"></script>
+
+    <h3>
+      <input type="button" onclick="tableFromJson()" id="bt" value="Save" />
+
+      <p id="showData"></p>
+    </h3>
+  </body>
+</html>
