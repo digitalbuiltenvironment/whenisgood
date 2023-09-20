@@ -1,6 +1,7 @@
 function addData() {
-  // Get input of user name
+  // Get input of user name and meeting name
   let name = document.getElementById('nameInput').value
+  let meetingName = document.getElementById('meetingInput').value
   // Get input values for specific date
   if (document.getElementById('nineInput').checked) {
     nineInput = document.getElementById('nineInput').value

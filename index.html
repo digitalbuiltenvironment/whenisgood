@@ -53,6 +53,12 @@
     <p id="selectedDay">Selected Day: None</p>
 
     <div id="calendar"></div>
+    <div id="meeting">
+      <ul>
+        <label for="meetingInput">Meeting name: </label>
+        <input type="text" id="meetingInput" />
+      </ul>
+    </div>
     <div id="name">
       <ul>
         <label for="nameInput">Enter your name: </label>
@@ -102,7 +108,7 @@
     </div>
 
     <button onclick="addData()">Add</button>
-
+    <p id="meetingInput">Meeting name: None</p>
     <table id="outputTable">
       <tr>
         <th>Date</th>
